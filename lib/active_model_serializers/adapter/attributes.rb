@@ -5,7 +5,7 @@ module ActiveModelSerializers
     class Attributes < Base
       def initialize(*)
         super
-        instance_options[:fieldset] ||= ActiveModel::Serializer::Fieldset.new(fields_to_fieldset(instance_options.delete(:fields)))
+        instance_options[:fieldset] ||= ActiveModel::Serializer::Fieldset.new(fields_to_fieldset(instance_options.delete(:fields))) if instance_options[:fields]
       end
 
       def serializable_hash(options = nil)
